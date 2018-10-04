@@ -32,4 +32,4 @@ $ Run php artisan migrate
 $ Run php artisan db:seed to run seeders, if any.
 $ Run php artisan serve
 ```
-#####You can now access your project at localhost:8000
+You can now access your project at localhost:8000
