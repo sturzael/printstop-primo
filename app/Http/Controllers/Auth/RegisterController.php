@@ -52,6 +52,7 @@ class RegisterController extends Controller
           // if ($validCode) {
           //   $customerCode =
           // }
+          $client = new \GuzzleHttp\Client();
           $vara = config('global.apiKey');
           die("$vara");
           // return Validator::make($data, [
