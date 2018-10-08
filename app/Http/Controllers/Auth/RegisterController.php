@@ -48,19 +48,31 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-          /** API REQUEST GOES HERE*/
-          // if ($validCode) {
-          //   $customerCode =
-          // }
-          $client = new \GuzzleHttp\Client();
-          $vara = config('global.apiKey');
-          die("$vara");
-          // return Validator::make($data, [
-          //     'name' => 'required|string|max:255',
-          //     'email' => 'required|string|email|max:255|unique:users',
-          //     'code' => 'required|string|min:2|max:10|unique:users|in:'.$customerCode,
-          //     'password' => 'required|string|min:6|confirmed',
-          // ]);
+      $apiKey = config('global.apiKey');
+      $apiPassword = config('global.password');
+
+      $client = new \GuzzleHttp\Client();
+      $res = $client->request("GET","http://online.printstop.co.nz:80/API/api/customers?customerCode=".$data['code']."&sortColumn=Code&includeDeliveryAddresses=false", [
+        'auth' => [$apiKey, $apiPassword]
+      ]);
+
+      $decodedResponse =  json_decode($res->getBody(),true);
+
+      if ($decodedResponse['Details']['TotalItemCount'] >= 1) {
+        $isValid = $data['code'];
+      }else {
+        $isValid = 'isnotavalidtoken';
+      }
+
+
+          // $vara = config('global.apiKey');
+          // die("$vara");
+          return Validator::make($data, [
+              'name' => 'required|string|max:255',
+              'email' => 'required|string|email|max:255|unique:users',
+              'code' => 'required|string|min:2|max:25|unique:users|in:'.$isValid,
+              'password' => 'required|string|min:6|confirmed',
+          ]);
 
 
     }
