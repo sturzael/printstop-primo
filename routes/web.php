@@ -16,6 +16,12 @@
 Auth::routes();
 
 
+/*
+|--------------------------------------------------------------------------
+| Redirect the following routes to login if not auth
+|--------------------------------------------------------------------------
+*/
+
 Route::group( ['middleware' => 'auth' ], function()
 {
   Route::get('/', function () {

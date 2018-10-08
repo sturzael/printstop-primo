@@ -11,15 +11,11 @@ class Authenticate extends Middleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @return string
-     */
-
-
-     /**
       * Redirect all users ot login screen if not authenticated
       */
     protected function redirectTo($request){
 
-      if ( ! $this->auth->user() ){
+      if (!$this->auth->user()){
           return route('login');
       }else {
         return $next($request);
