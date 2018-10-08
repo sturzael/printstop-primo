@@ -64,15 +64,12 @@ class RegisterController extends Controller
         $isValid = 'isnotavalidtoken';
       }
 
-
-          // $vara = config('global.apiKey');
-          // die("$vara");
-          return Validator::make($data, [
-              'name' => 'required|string|max:255',
-              'email' => 'required|string|email|max:255|unique:users',
-              'code' => 'required|string|min:2|max:25|unique:users|in:'.$isValid,
-              'password' => 'required|string|min:6|confirmed',
-          ]);
+      return Validator::make($data, [
+          'name' => 'required|string|max:255',
+          'email' => 'required|string|email|max:255|unique:users',
+          'code' => 'required|string|min:2|max:25|unique:users|in:'.$isValid,
+          'password' => 'required|string|min:6|confirmed',
+      ]);
 
 
     }
@@ -85,12 +82,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      die('passed validation');
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'code' => $data['code'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'code' => $data['code'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 }
