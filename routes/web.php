@@ -21,12 +21,17 @@ Auth::routes();
 | Redirect the following routes to login if not auth
 |--------------------------------------------------------------------------
 */
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'contactController@index')->name('contact');
+// Route::group( ['middleware' => 'auth' ], function()
+// {
+//
+// });
 
-Route::group( ['middleware' => 'auth' ], function()
-{
-  Route::get('/', function () {
-      return view('welcome');
-  });
-  Route::get('/home', 'HomeController@index')->name('home');
-  Route::get('/contact', 'contactController@index')->name('contact');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

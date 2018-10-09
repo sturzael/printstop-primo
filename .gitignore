@@ -6,7 +6,6 @@ httpful.phar
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
 /.idea
 /.vscode
 /.vagrant
@@ -17,3 +16,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 config/global.php
+vendor
