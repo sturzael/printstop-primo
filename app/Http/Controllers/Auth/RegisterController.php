@@ -1,7 +1,7 @@
 <?php
 
 namespace Primo\Http\Controllers\Auth;
-
+use Input;
 use Primo\User;
 use Primo\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}" @if (config('voyager.multilingual.rtl')) dir="rtl" @endif>
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="none" />
@@ -29,7 +30,13 @@
         body.login .login-sidebar {
           border: 0px !important;
           margin: 0 auto;
+          height: 100vh;
           float: none !important;
+        }
+        body.login .login-container {
+          position: relative !important;
+          margin-top: 0px;
+          transform: translateY(-50%);
         }
 
         body.login .form-group-default.focused{
@@ -57,7 +64,7 @@
         </div> <!-- .login-sidebar -->
     </div> <!-- .row -->
 </div> <!-- .container-fluid -->
-<script>
+<!-- <script>
     var btn = document.querySelector('button[type="submit"]');
     var form = document.forms[0];
     var email = document.querySelector('[name="email"]');
@@ -88,6 +95,6 @@
        document.getElementById('passwordGroup').classList.remove("focused");
     });
 
-</script>
+</script> -->
 </body>
 </html>
