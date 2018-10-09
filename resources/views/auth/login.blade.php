@@ -14,10 +14,9 @@
     @endif
     <style>
         body {
-            background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}');
             background-color: {{ Voyager::setting("admin.bg_color", "#FFFFFF" ) }};
         }
-        body.login .login-sidebar {
+        body.login {
             border-top:5px solid {{ config('voyager.primary_color','#22A7F0') }};
         }
         @media (max-width: 767px) {
@@ -26,6 +25,13 @@
                 border-left:5px solid {{ config('voyager.primary_color','#22A7F0') }};
             }
         }
+
+        body.login .login-sidebar {
+          border: 0px !important;
+          margin: 0 auto;
+          float: none !important;
+        }
+
         body.login .form-group-default.focused{
             border-color:{{ config('voyager.primary_color','#22A7F0') }};
         }
@@ -39,9 +45,8 @@
 <body class="login">
 <div class="container-fluid">
     <div class="row">
-        <div class="faded-bg animated"></div>
 
-        <div class="col-xs-12 col-sm-5 col-md-4 login-sidebar">
+        <div class="col-xs-12 col-sm-12 col-md-4 login-sidebar" style="border: 0px !important">
 
             <div class="login-container">
 
