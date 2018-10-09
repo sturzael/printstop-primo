@@ -13,7 +13,7 @@
 
 
 
-Auth::routes();
+// Auth::routes();
 
 
 /*
@@ -21,17 +21,25 @@ Auth::routes();
 | Redirect the following routes to login if not auth
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/contact', 'contactController@index')->name('contact');
-// Route::group( ['middleware' => 'auth' ], function()
-// {
-//
-// });
-
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'dashboard'], function () {
     Voyager::routes();
 });
+Route::get('/', function () {
+  Auth::routes();
+    if(Auth::check()) {
+        return redirect('/dashboard');
+    } else {
+        return redirect('/');
+    }
+});
+
+
+Route::group( ['middleware' => 'auth' ], function()
+{
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/contact', 'contactController@index')->name('contact');
+});
+
+
+
+  Route::get('/dashboard/login', 'loginRedirect');

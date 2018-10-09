@@ -3,7 +3,7 @@
 @section('content')
                 <p>{{ __('voyager::login.signin_below') }}</p>
 
-                <form action="{{ route('voyager.login') }}" method="POST">
+                <form action="/auth/login" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group form-group-default" id="emailGroup">
                         <label>{{ __('voyager::generic.email') }}</label>
@@ -25,7 +25,7 @@
                     </button>
 
                     <button class="btn btn-block login-button" style="float:right;">
-                        <span class="signin"><a style="color:white;"href="{{ route('password.request') }}">
+                        <span class="signin"><a style="color:white;">
                           {{ __('Forgot Your Password?') }}</a></span>
                     </button>
 

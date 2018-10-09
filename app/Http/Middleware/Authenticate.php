@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request){
 
       if (!$this->auth->user()){
-          return route('login');
+          return route('/contact');
       }else {
         return $next($request);
       }
