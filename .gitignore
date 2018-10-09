@@ -16,4 +16,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 config/global.php
-vendor
+/vendor
