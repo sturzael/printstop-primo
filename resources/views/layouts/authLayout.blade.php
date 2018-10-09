@@ -45,6 +45,9 @@
         .login-button, .bar:before, .bar:after{
             background:{{ config('voyager.primary_color','#22A7F0') }};
         }
+        .invalid-feedback{
+          color: #e22222 !important;
+        }
     </style>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">

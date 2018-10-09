@@ -8,7 +8,7 @@
                     <div class="form-group form-group-default">
                         <label for="name" >{{ __('Name') }}</label>
                         <div class="controls">
-                            <input type="text" name="text" id="name" value="{{ old('email') }}" placeholder="Name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required >
+                            <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required >
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -73,7 +73,7 @@
 
               <div style="clear:both"></div>
 
-              @if(!$errors->isEmpty())
+              <!-- @if(!$errors->isEmpty())
               <div class="alert alert-red">
                 <ul class="list-unstyled">
                     @foreach($errors->all() as $err)
@@ -81,5 +81,5 @@
                     @endforeach
                 </ul>
               </div>
-              @endif
+              @endif -->
 @endsection
