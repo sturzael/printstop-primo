@@ -13,7 +13,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
+/vendor
 .phpunit.result.cache
 config/global.php
-/vendor
+.env

@@ -4,7 +4,6 @@
             <button class="hamburger btn-link">
                 <span class="hamburger-inner"></span>
             </button>
-            <h1>test</h1>
             @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @if(count(Request::segments()) == 1)
@@ -50,8 +49,8 @@
                     @if(is_array($nav_items) && !empty($nav_items))
                     @foreach($nav_items as $name => $item)
                     <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>
-                        @if(isset($item['route']) && $item['route'] == 'voyager.logout')
-                        <form action="{{ route('voyager.logout') }}" method="POST">
+                        @if(isset($item['url']) && $item['url'] == 'logout')
+                        <form action="{{ url('/logout') }}" method="POST">
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-block">
                                 @if(isset($item['icon_class']) && !empty($item['icon_class']))

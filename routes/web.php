@@ -13,7 +13,7 @@
 
 
 
-// Auth::routes();
+Auth::routes();
 
 
 /*
@@ -21,10 +21,34 @@
 | Redirect the following routes to login if not auth
 |--------------------------------------------------------------------------
 */
+
+
+
+//
+//
+
 Route::group(['prefix' => 'dashboard'], function () {
     Voyager::routes();
+
+
+
 });
+// Route::get('/dashboard', function () {
+//   Auth::routes();
+//     if(!Auth::check()) {
+//       return redirect('/');
+//     }
+// });
 Route::get('/', function () {
+  Auth::routes();
+    if(Auth::check()) {
+        return redirect('/dashboard');
+    } else {
+        return View('auth.login');
+    }
+});
+
+Route::get('/dashboard/login', function () {
   Auth::routes();
     if(Auth::check()) {
         return redirect('/dashboard');
@@ -32,14 +56,9 @@ Route::get('/', function () {
         return redirect('/');
     }
 });
-
-
+Route::get('/dashboard/logout', 'Auth\LoginController@logout');
 Route::group( ['middleware' => 'auth' ], function()
 {
-  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/dashboard', 'HomeController@index')->name('home');
   Route::get('/contact', 'contactController@index')->name('contact');
 });
-
-
-
-  Route::get('/dashboard/login', 'loginRedirect');
