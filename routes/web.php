@@ -36,4 +36,12 @@ Route::get('/dashboard/login', function () {
         return redirect('/');
     }
 });
+
+
+
+
 Route::get('/dashboard/logout', 'Auth\LoginController@logout');
+Route::get('500', function()
+{
+    abort(404);
+});
