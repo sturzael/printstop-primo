@@ -33,6 +33,7 @@ return [
 
     'controllers' => [
         'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+         'namespace' => 'Primo\Http\Controllers\Voyager'
     ],
 
     /*
