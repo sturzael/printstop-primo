@@ -19,18 +19,29 @@ class VoyagerController extends BaseVoyagerController
 
     $decodedResponse =  json_decode($res->getBody(),true);
 
+
+    //Title
     $data = array(
          'title'=>$decodedResponse['Details']['Items'][0]['Name']
     );
 
+    //Get sizes
     $sizesList = array();
-
     foreach ($decodedResponse['Details']['Items'][0]['AllowedDimensions'] as $size) {
       $sizesList[] = $size['Code'].": ".$size['Width']."mm x ".$size['Depth']."mm";
     }
+    $data['sizes'] = $sizesList;
 
-    $data[] = $sizesList;
-
+    //Paper
+    $paperList = array();
+    foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $paper) {
+      if ($paper['Name'] === 'Laminating') {
+        foreach ($paper['CostCentres'] as $paperType) {
+            $paperList[] = $paperType['Description'];
+        }
+      }
+    }
+    $data['papers'] = $paperList;
 
     return Voyager::view('voyager::index', compact('data'));
   }

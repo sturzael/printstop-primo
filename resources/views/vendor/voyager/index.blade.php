@@ -4,15 +4,41 @@
     <div class="page-content"style="padding-left:20px;">
         @include('voyager::alerts')
         @include('voyager::dimmers')
+        <h1>{{$data['title']}}</h1>
         <form class="" action="#" method="post">
-          @if(count($data[0]) > 0)
+          @if(count($data['sizes']) > 0)
           <label for="size">Finished Size </label>
           <select id="size">
-            @foreach($data[0] as $service)
-            <option> {{$service}}</option>
+            @foreach($data['sizes'] as $size)
+            <option> {{$size}}</option>
             @endforeach
         </select>
         @endif
+
+        <label for="size">Pages</label>
+        <select id="size">
+
+          <option>1</option>
+          <option>2</option>
+            <option>3</option>
+              <option>4</option>
+                <option>5</option>
+
+      </select>
+
+
+
+      @if(count($data['sizes']) > 0)
+    <label for="paper">Paper</label>
+    <select id="paper">
+      @foreach($data['papers'] as $paper)
+      <option> {{$paper}}</option>
+      @endforeach
+
+  </select>
+    @endif
+
+
         </form>
 
     </div>
