@@ -32,16 +32,16 @@ class VoyagerController extends BaseVoyagerController
     }
     $data['sizes'] = $sizesList;
 
-    //Paper
-    $paperList = array();
-    foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $paper) {
-      if ($paper['Name'] === 'Laminating') {
-        foreach ($paper['CostCentres'] as $paperType) {
-            $paperList[] = $paperType['Description'];
+    //Lamination
+    $LaminationList = array();
+    foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $lamination) {
+      if ($lamination['Name'] === 'Laminating') {
+        foreach ($lamination['CostCentres'] as $laminationType) {
+            $LaminationList[] = $laminationType['Description'];
         }
       }
     }
-    $data['papers'] = $paperList;
+    $data['Lamination'] = $LaminationList;
 
     return Voyager::view('voyager::index', compact('data'));
   }

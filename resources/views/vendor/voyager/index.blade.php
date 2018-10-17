@@ -29,16 +29,16 @@
 
 
       @if(count($data['sizes']) > 0)
-    <label for="paper">Paper</label>
+    <label for="paper">Lamination</label>
     <select id="paper">
-      @foreach($data['papers'] as $paper)
-      <option> {{$paper}}</option>
+      @foreach($data['Lamination'] as $Laminationtype)
+      <option> {{$Laminationtype}}</option>
       @endforeach
 
   </select>
     @endif
-
-
+  <label for="Quantity">Quantity</label>
+<input type="number" name="Quantity" max="99999">
         </form>
 
     </div>
