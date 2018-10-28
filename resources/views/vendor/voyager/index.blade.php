@@ -14,28 +14,23 @@
             @endforeach
         </select>
         @endif
-
         <label for="size">Pages</label>
         <select id="size">
-
           <option>1</option>
           <option>2</option>
-            <option>3</option>
-              <option>4</option>
-                <option>5</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
 
-      </select>
-
-
-
-      @if(count($data['sizes']) > 0)
-    <label for="paper">Lamination</label>
-    <select id="paper">
+      @if(count($data['Lamination']) > 0)
+      <label for="paper">Lamination</label>
+      <select id="paper">
       @foreach($data['Lamination'] as $Laminationtype)
       <option> {{$Laminationtype}}</option>
+      <option>No Lamination</option>
       @endforeach
-
-  </select>
+      </select>
     @endif
   <label for="Quantity">Quantity</label>
 <input type="number" name="Quantity" max="99999">
@@ -43,15 +38,3 @@
 
     </div>
 @stop
-<!-- Array (
-
-        [title] => Leaflet - Folded
-        [0] => Array (
-                        [0] => A7
-                        [1] => A6
-                        [2] => DL
-                        [3] => A5
-                        [4] => A4
-                        [5] => A3
-                      )
-      ) -->
