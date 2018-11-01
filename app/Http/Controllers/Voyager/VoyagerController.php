@@ -42,7 +42,7 @@ class VoyagerController extends BaseVoyagerController
       }
     }
     $data['Lamination'] = $LaminationList;
-s
+    
     return Voyager::view('voyager::index', compact('data'));
   }
 
