@@ -5,7 +5,6 @@ $client = new \GuzzleHttp\Client();
 // |--------------------------------------------------------------------------
 // | Primo Details
 // |--------------------------------------------------------------------------
-// |
 // | These values are required to connect to primo's services. These values are used when the
 // | framework needs to connect the application to pull data related to primo. Will be used
 // | in most conntrollers.
