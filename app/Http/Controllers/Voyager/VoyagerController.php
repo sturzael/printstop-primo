@@ -11,7 +11,9 @@ class VoyagerController extends BaseVoyagerController
     $apiKey = config('global.apiKey');
     $apiPassword = config('global.password');
     $idArray = array('11','2');
-$id = '11';
+
+    $id = '2';
+
     $client = new \GuzzleHttp\Client();
     $res = $client->request("GET","http://online.printstop.co.nz:80/API/api/producttypes?id=$id", [
       'auth' => [$apiKey, $apiPassword]
