@@ -15,7 +15,7 @@ class contactController extends Controller
     {
 
 
-      return view('contact');
+      return view('vendor.voyager.contact');
     }
 
     /**
