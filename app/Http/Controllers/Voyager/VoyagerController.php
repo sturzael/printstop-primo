@@ -10,7 +10,9 @@ class VoyagerController extends BaseVoyagerController
   {
     $apiKey = config('global.apiKey');
     $apiPassword = config('global.password');
-    $id = '11';
+    $idArray = array('11','2');
+
+    $id = '2';
 
     $client = new \GuzzleHttp\Client();
     $res = $client->request("GET","http://online.printstop.co.nz:80/API/api/producttypes?id=$id", [
@@ -18,7 +20,6 @@ class VoyagerController extends BaseVoyagerController
     ]);
 
     $decodedResponse =  json_decode($res->getBody(),true);
-
 
     //Title
     $data = array(
@@ -42,7 +43,7 @@ class VoyagerController extends BaseVoyagerController
       }
     }
     $data['Lamination'] = $LaminationList;
-    
+
     return Voyager::view('voyager::index', compact('data'));
   }
 

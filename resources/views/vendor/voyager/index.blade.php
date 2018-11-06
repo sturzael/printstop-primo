@@ -28,8 +28,9 @@
       <select id="paper">
       @foreach($data['Lamination'] as $Laminationtype)
       <option> {{$Laminationtype}}</option>
-      <option>No Lamination</option>
+
       @endforeach
+          <option>No Lamination</option>
       </select>
     @endif
   <label for="Quantity">Quantity</label>
