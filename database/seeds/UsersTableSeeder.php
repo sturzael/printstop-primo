@@ -13,14 +13,14 @@ class UsersTableSeeder extends Seeder
     {
       DB::table('users')->insert(
         array(
-      'id' => '9999',
-      'role_id' => '1',
-      'name'=> 'admin',
-      'email'=>'admin@nettl.com',
-      'avatar' =>'users/default.png',
-      'code'=>'99999',
-      'password'=>'password'
-  )
-);
+          'id' => '9999',
+          'role_id' => '1',
+          'name'=> 'admin',
+          'email'=>'admin@nettl.com',
+          'avatar' =>'users/default.png',
+          'code'=>'99999',
+          'password'=>'password'
+        )
+      );
     }
 }
