@@ -23,6 +23,18 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+          array(
+        'id' => '1',
+        'role_id' => '1',
+        'name'=> 'admin',
+        'email'=>'admin@nettl.com',
+        'avatar' =>'users/default.png',
+        'code'=>'400855',
+        'password'=>'password'
+    )
+);
     }
 
     /**
