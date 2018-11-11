@@ -18,6 +18,7 @@ class ProductManagement extends Migration
           $table->string('product_id')->unique();
           $table->string('product_type');
           $table->string('paper');
+          $table->string('product_name');
           $table->timestamps();
       });
     }

@@ -15,7 +15,7 @@ class StockTypeTableSeeder extends Seeder
       $timestamp = strtotime( "November 11, 2018" );
       DB::table('stock_management')->insert(
         array(
-          'id' => '1',
+
           'paper_id' => '7385',
           'paper_code'=> 'DIG GLO 130',
           'paper_product'=>'Leaflet',
