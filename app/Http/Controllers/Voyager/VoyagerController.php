@@ -10,9 +10,9 @@ class VoyagerController extends BaseVoyagerController
 {
   public function index()
   {
-    die("here");
+
     $products = json_decode(product_model::all(),true);
-    return Voyager::view('voyager::index', compact('products'));
+    return  view('vendor.voyager.index', compact('products'));
   }
 
 }
