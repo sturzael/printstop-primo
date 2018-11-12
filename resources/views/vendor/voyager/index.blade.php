@@ -13,7 +13,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$product['paper']}}</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="dashboard/{{$product['id']}}" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
