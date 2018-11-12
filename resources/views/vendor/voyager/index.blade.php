@@ -2,39 +2,22 @@
 
 @section('content')
     <div class="page-content"style="padding-left:20px;">
-        @include('voyager::alerts')
-        @include('voyager::dimmers')
-        <h1>{{$data['title']}}</h1>
-        <form class="" action="#" method="post">
-          @if(count($data['sizes']) > 0)
-          <label for="size">Finished Size </label>
-          <select id="size">
-            @foreach($data['sizes'] as $size)
-            <option> {{$size}}</option>
-            @endforeach
-        </select>
-        @endif
-        <label for="size">Pages</label>
-        <select id="size">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-
-      @if(count($data['Lamination']) > 0)
-      <label for="paper">Lamination</label>
-      <select id="paper">
-      @foreach($data['Lamination'] as $Laminationtype)
-      <option> {{$Laminationtype}}</option>
-      <option>No Lamination</option>
+      @foreach($products as $product)
+      <option> {{$product['paper']}}</option>
       @endforeach
-      </select>
-    @endif
-  <label for="Quantity">Quantity</label>
-<input type="number" name="Quantity" max="99999">
-        </form>
 
+      <div class="row">
+          @foreach($products as $product)
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{$product['paper']}}</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="dashboard/{{$product['id']}}" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+    @endforeach
+      </div>
     </div>
 @stop
