@@ -29,6 +29,6 @@ class StockManagmement extends Migration
      */
     public function down()
     {
-        //
+            Schema::dropIfExists('stock_management');
     }
 }

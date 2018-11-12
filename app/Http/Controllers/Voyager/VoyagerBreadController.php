@@ -6,5 +6,5 @@ use TCG\Voyager\Http\Controllers\VoyagerBreadController as BaseVoyagerBreadContr
 
 class VoyagerBreadController extends BaseVoyagerBreadController
 {
-    //
+
 }

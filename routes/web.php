@@ -37,11 +37,11 @@ Route::get('/dashboard/login', function () {
     }
 });
 
-
+Route::resource('product', 'VoyagerController');
 
 Route::get('/dashboard/contact', 'contactController@index');
 Route::get('/dashboard/logout', 'Auth\LoginController@logout');
-Route::get('500', function()
-{
-    abort(404);
-});
+// Route::get('500', function()
+// {
+//     abort(404);
+// });

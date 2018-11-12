@@ -1,50 +1,27 @@
 <?php
 
 namespace Primo\Http\Controllers\Voyager;
+use Illuminate\Http\Request;
+use Primo\product_model;
 
 use TCG\Voyager\Http\Controllers\VoyagerController as BaseVoyagerController;
 use TCG\Voyager\Facades\Voyager;
 class VoyagerController extends BaseVoyagerController
 {
+
+  public function __construct() {
+    $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'delete']]);
+  }
+
   public function index()
   {
-    $apiKey = config('global.apiKey');
-    $apiPassword = config('global.password');
-    $idArray = array('11','2');
+    $products = json_decode(product_model::all(),true);
+    return  view('vendor.voyager.index', compact('products'));
+  }
 
-    $id = '2';
-
-    $client = new \GuzzleHttp\Client();
-    $res = $client->request("GET","http://online.printstop.co.nz:80/API/api/producttypes?id=$id", [
-      'auth' => [$apiKey, $apiPassword]
-    ]);
-
-    $decodedResponse =  json_decode($res->getBody(),true);
-
-    //Title
-    $data = array(
-         'title'=>$decodedResponse['Details']['Items'][0]['Name']
-    );
-
-    //Get sizes
-    $sizesList = array();
-    foreach ($decodedResponse['Details']['Items'][0]['AllowedDimensions'] as $size) {
-      $sizesList[] = $size['Code'].": ".$size['Width']."mm x ".$size['Depth']."mm";
-    }
-    $data['sizes'] = $sizesList;
-
-    //Lamination
-    $LaminationList = array();
-    foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $lamination) {
-      if ($lamination['Name'] === 'Laminating') {
-        foreach ($lamination['CostCentres'] as $laminationType) {
-            $LaminationList[] = $laminationType['Description'];
-        }
-      }
-    }
-    $data['Lamination'] = $LaminationList;
-
-    return Voyager::view('voyager::index', compact('data'));
+  public function show($id) {
+    $product = product_model::where('id', "=", $id)->firstOrFail();
+    return view('location.index', compact('product'));
   }
 
 }
