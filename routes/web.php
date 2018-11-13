@@ -16,7 +16,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'dashboard'], function () {
     Voyager::routes();
-
 });
 
 Route::get('/', function () {
@@ -28,14 +27,18 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/dashboard/login', function () {
-  Auth::routes();
-    if(Auth::check()) {
-        return redirect('/dashboard');
-    } else {
-        return redirect('/');
-    }
-});
+Route::get('/dashboard/', 'Voyager\VoyagerController@index')->middleware('auth');
+
+// Route::resource('/dashboard/product', 'Voyager\VoyagerController');
+
+// Route::get('/dashboard/login', function () {
+//   Auth::routes();
+//     if(Auth::check()) {
+//         return redirect('/dashboard');
+//     } else {
+//         return redirect('/');
+//     }
+// });
 
 Route::resource('/dashboard/product', 'Voyager\VoyagerController');
 
