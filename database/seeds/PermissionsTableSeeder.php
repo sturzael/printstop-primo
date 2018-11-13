@@ -29,6 +29,8 @@ class PermissionsTableSeeder extends Seeder
 
         Permission::generateFor('roles');
 
+        Permission::generateFor('product_management');
+        Permission::generateFor('stock_management');
         Permission::generateFor('users');
 
         Permission::generateFor('settings');
