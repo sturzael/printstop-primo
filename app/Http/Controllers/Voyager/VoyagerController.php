@@ -22,7 +22,7 @@ class VoyagerController extends BaseVoyagerController
 
   public function show($id) {
     $product = product_model::where('id', "=", $id)->firstOrFail();
-    $paper = StockManagement::where('paper_product', "=", $product->paper)->first();
+    $paper = StockManagement::where('paper_product', "=", $product->paper);
 
     $apiKey = config('global.apiKey');
     $apiPassword = config('global.password');
