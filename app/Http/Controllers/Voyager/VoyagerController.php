@@ -2,7 +2,9 @@
 
 namespace Primo\Http\Controllers\Voyager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Primo\product_model;
+
 use Primo\StockManagement;
 use TCG\Voyager\Http\Controllers\VoyagerController as BaseVoyagerController;
 use TCG\Voyager\Facades\Voyager;
@@ -22,7 +24,9 @@ class VoyagerController extends BaseVoyagerController
 
   public function show($id) {
     $product = product_model::where('id', "=", $id)->firstOrFail();
-    $paper = StockManagement::where('paper_product', "=", $product->paper);
+    $stock = DB::table('stock_management')->select('paper_code',"paper_product as $product->paper")->get();
+
+    $decodedStock = json_decode($stock, true);
 
     $apiKey = config('global.apiKey');
     $apiPassword = config('global.password');
@@ -32,16 +36,18 @@ class VoyagerController extends BaseVoyagerController
       'auth' => [$apiKey, $apiPassword]
     ]);
 
-    $decodedResponse =  json_decode($res->getBody(),true);
+    $decodedResponse = json_decode($res->getBody(),true);
 
     //Title
     $data = array(
          'title'=>$decodedResponse['Details']['Items'][0]['Name']
     );
 
-    //Get Stock
+    //Stock
     $paperList=array();
-    $paperList[]=$paper->paper_code;
+    foreach ($decodedStock as $paper) {
+      $paperList[] = $paper['paper_code'];
+    }
     $data['Stock'] = $paperList;
 
     //Get sizes

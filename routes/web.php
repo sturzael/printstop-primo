@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,14 +9,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Auth::routes();
-
 Route::group(['prefix' => 'dashboard'], function () {
     Voyager::routes();
 });
-
 Route::get('/', function () {
   Auth::routes();
     if(Auth::check()) {
@@ -26,22 +21,15 @@ Route::get('/', function () {
         return View('auth.login');
     }
 });
-
-Route::get('/dashboard/', 'Voyager\VoyagerController@index')->middleware('auth');
-
-// Route::resource('/dashboard/product', 'Voyager\VoyagerController');
-
-// Route::get('/dashboard/login', function () {
-//   Auth::routes();
-//     if(Auth::check()) {
-//         return redirect('/dashboard');
-//     } else {
-//         return redirect('/');
-//     }
-// });
-
+Route::get('/dashboard/login', function () {
+  Auth::routes();
+    if(Auth::check()) {
+        return redirect('/dashboard');
+    } else {
+        return redirect('/');
+    }
+});
 Route::resource('/dashboard/product', 'Voyager\VoyagerController');
-
 Route::get('/dashboard/contact', 'contactController@index');
 Route::get('/dashboard/logout', 'Auth\LoginController@logout');
 // Route::get('500', function()
