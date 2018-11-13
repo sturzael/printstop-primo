@@ -57,7 +57,7 @@ class VoyagerController extends BaseVoyagerController
     $data['Lamination'] = $LaminationList;
 
 
-    return view('vendor.voyager.product', compact('data'));
+    return view('vendor.voyager.product', compact('data','product'));
   }
 
 }

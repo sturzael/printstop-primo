@@ -6,10 +6,11 @@
 
 #product_image {
   text-align: center;
-  padding-top: 50px;
 }
 
-body {
-  background-color: black;
+.form-element {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: block;
 }
 
