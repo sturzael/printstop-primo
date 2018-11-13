@@ -24,6 +24,21 @@
         </select>
           </div>
         @endif
+
+        @if(count($data['Stock']) > 0)
+        <div class="form-element">
+    <label for="size">Paper</label>
+    <select id="size">
+      @foreach($data['Stock'] as $paper)
+      <option> {{$paper}}</option>
+      @endforeach
+  </select>
+    </div>
+      @endif
+
+
+
+
               <div class="form-element">
         <label for="size">Pages</label>
         <select id="size">
