@@ -4,7 +4,7 @@ namespace Primo\Http\Controllers\Voyager;
 
 use TCG\Voyager\Http\Controllers\VoyagerController as BaseVoyagerController;
 use TCG\Voyager\Facades\Voyager;
-class VoyagerController extends BaseVoyagerController
+class OldVoyagerController extends BaseVoyagerController
 {
   public function index()
   {
