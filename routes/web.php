@@ -30,6 +30,7 @@ Route::get('/dashboard/login', function () {
     }
 });
 Route::resource('/dashboard/product', 'Voyager\VoyagerController');
+Route::get('/dashboard/product/{id}/estimate', 'Voyager\VoyagerController@estimate');
 Route::get('/dashboard/contact', 'contactController@index');
 Route::get('/dashboard/logout', 'Auth\LoginController@logout');
 // Route::get('500', function()

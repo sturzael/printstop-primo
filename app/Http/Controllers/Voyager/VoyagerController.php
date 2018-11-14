@@ -4,7 +4,6 @@ namespace Primo\Http\Controllers\Voyager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Primo\product_model;
-
 use Primo\StockManagement;
 use TCG\Voyager\Http\Controllers\VoyagerController as BaseVoyagerController;
 use TCG\Voyager\Facades\Voyager;
@@ -17,7 +16,6 @@ class VoyagerController extends BaseVoyagerController
 
   public function index()
   {
-
     $products = json_decode(product_model::all(),true);
     return  view('vendor.voyager.index', compact('products'));
   }
@@ -71,4 +69,47 @@ class VoyagerController extends BaseVoyagerController
     return view('vendor.voyager.product', compact('data','product'));
   }
 
+
+  public function estimate($id) {
+
+    $json = [
+              'ProductTypeID'=> 2,
+              'FinishedSize'=> [
+                'Code'=> '55 X 90MM BUSINESS CARD'
+              ],
+              'Quantity'=> 50,
+              'JobType'=> 'DIGITAL',
+              'Parts'=> [
+                [
+                  'Name'=> 'Business Cards',
+                  'Pages'=> 2,
+                  'PaperCode'=> 'DIG GLO 150',
+                  'FinishedSize'=> [
+                    'Code'=> '55 X 90MM BUSINESS CARD'
+                  ],
+                  'ProductTypePartID'=> 41,
+                ]
+              ]
+
+      ];
+    $product = product_model::where('id', "=", $id)->firstOrFail();
+
+    $apiKey = config('global.apiKey');
+    $apiPassword = config('global.password');
+
+    $client = new \GuzzleHttp\Client();
+
+
+    $options = [
+        'auth' => [$apiKey, $apiPassword],
+        'json' => $json
+       ];
+
+
+    $res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", $options);
+
+    $decodedResponse = json_decode($res->getBody(),true);
+    var_dump($decodedResponse['Details']['Estimate']['Price']);
+
+    }
 }
