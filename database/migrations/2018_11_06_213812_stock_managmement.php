@@ -17,6 +17,7 @@ class StockManagmement extends Migration
           $table->increments('id');
           $table->string('paper_id')->unique();
           $table->string('paper_code');
+          $table->string('paper_name');
           $table->string('paper_product');
           $table->timestamps();
       });

@@ -21,10 +21,11 @@ class DatabaseSeeder extends Seeder
       $this->seed('SettingsTableSeeder');
       $this->call('ProductTableSeeder');
       $this->call('StockTypeTableSeeder');
+      $this->call('UsersTableSeeder');
       $this->call(DataTypesTableSeeder::class);
       $this->call(DataRowsTableSeeder::class);
       $this->call(MenusTableSeeder::class);
       $this->call(MenuItemsTableSeeder::class);
-      $this->call(UsersTableSeeder::class);
+
     }
 }

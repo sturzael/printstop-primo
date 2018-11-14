@@ -16,8 +16,6 @@ php artisan voyager:admin admin@nettl.com
 echo 'Email: admin@nettl.com'
 echo 'Password: password'
 
-echo 'Vist your app and login at localhost/login'
-echo 'Firing up the application'
+echo 'Vist your app and login at localhost:8000/login'
 php artisan serve
-
 exit
