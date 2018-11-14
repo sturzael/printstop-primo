@@ -42,7 +42,7 @@ class VoyagerController extends BaseVoyagerController
     );
 
     //Stock
-    $paperList=array();
+    $paperList = array();
     foreach ($decodedStock as $paper) {
       $paperList[] = $paper['paper_code'];
     }
@@ -51,7 +51,7 @@ class VoyagerController extends BaseVoyagerController
     //Get sizes
     $sizesList = array();
     foreach ($decodedResponse['Details']['Items'][0]['AllowedDimensions'] as $size) {
-      $sizesList[] = $size['Code'].": ".$size['Width']."mm x ".$size['Depth']."mm";
+      $sizesList[] = ['Code'=>$size['Code'], 'Description'=>$size['Code'].": ".$size['Width']."mm x ".$size['Depth']."mm" ];
     }
     $data['sizes'] = $sizesList;
 
@@ -60,7 +60,7 @@ class VoyagerController extends BaseVoyagerController
     foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $lamination) {
       if ($lamination['Name'] === 'Laminating') {
         foreach ($lamination['CostCentres'] as $laminationType) {
-            $LaminationList[] = $laminationType['Description'];
+            $LaminationList[] = ['Code'=>$laminationType['Code'],'Description'=>$laminationType['Description']];
         }
       }
     }
@@ -78,10 +78,8 @@ class VoyagerController extends BaseVoyagerController
                 'Code'=> '55 X 90MM BUSINESS CARD'
               ],
               'Quantity'=> 50,
-              'JobType'=> 'DIGITAL',
               'Parts'=> [
                 [
-                  'Name'=> 'Business Cards',
                   'Pages'=> 2,
                   'PaperCode'=> 'DIG GLO 150',
                   'FinishedSize'=> [
@@ -99,12 +97,10 @@ class VoyagerController extends BaseVoyagerController
 
     $client = new \GuzzleHttp\Client();
 
-
     $options = [
         'auth' => [$apiKey, $apiPassword],
         'json' => $json
        ];
-
 
     $res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", $options);
 

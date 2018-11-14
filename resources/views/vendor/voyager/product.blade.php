@@ -16,7 +16,7 @@
           <label for="size">Finished Size </label>
           <select id="size">
             @foreach($data['sizes'] as $size)
-            <option> {{$size}}</option>
+            <option value="{{$size['Code']}}"> {{$size['Description']}}</option>
             @endforeach
           </select>
         </div>
@@ -36,11 +36,11 @@
         <div class="form-element">
           <label for="size">Pages</label>
           <select id="size">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
         </div>
 
@@ -49,7 +49,7 @@
           <label for="paper">Lamination</label>
           <select id="paper">
             @foreach($data['Lamination'] as $Laminationtype)
-            <option> {{$Laminationtype}}</option>
+            <option value="{{$Laminationtype['Code']}}"> {{$Laminationtype['Description']}}</option>
             @endforeach
             <option>No Lamination</option>
           </select>
@@ -58,7 +58,7 @@
 
         <div class="form-element">
           <label for="Quantity">Quantity</label>
-          <input type="number" name="Quantity" max="99999">
+          <input type="number" name="Quantity" max="99999" value="">
         </div>
       </form>
     </div>
