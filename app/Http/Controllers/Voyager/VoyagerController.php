@@ -3,6 +3,7 @@
 namespace Primo\Http\Controllers\Voyager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Primo\product_model;
 use Primo\StockManagement;
 use TCG\Voyager\Http\Controllers\VoyagerController as BaseVoyagerController;
@@ -22,7 +23,7 @@ class VoyagerController extends BaseVoyagerController
 
   public function show($id) {
     $product = product_model::where('id', "=", $id)->firstOrFail();
-    $stock = DB::table('stock_management')->select('paper_code',"paper_product as $product->paper")->get();
+    $stock = DB::table('stock_management')->select('paper_code','paper_name',"paper_product as $product->paper")->get();
 
     $decodedStock = json_decode($stock, true);
 
@@ -41,10 +42,14 @@ class VoyagerController extends BaseVoyagerController
          'title'=>$decodedResponse['Details']['Items'][0]['Name']
     );
 
+    //Product IDs
+      $data['ProductTypeId'] = $product->product_type;
+      $data['ProductTypePartId'] = $decodedResponse['Details']['Items'][0]['Parts'][0]['ID'];
+
     //Stock
     $paperList = array();
     foreach ($decodedStock as $paper) {
-      $paperList[] = $paper['paper_code'];
+      $paperList[] = ['Code'=>$paper['paper_code'],'Stock'=>$paper['paper_name']];
     }
     $data['Stock'] = $paperList;
 
@@ -60,7 +65,7 @@ class VoyagerController extends BaseVoyagerController
     foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $lamination) {
       if ($lamination['Name'] === 'Laminating') {
         foreach ($lamination['CostCentres'] as $laminationType) {
-            $LaminationList[] = ['Code'=>$laminationType['Code'],'Description'=>$laminationType['Description']];
+            $LaminationList[] = ['ID'=>$laminationType['ID'],'Description'=>$laminationType['Description']];
         }
       }
     }
@@ -70,31 +75,41 @@ class VoyagerController extends BaseVoyagerController
   }
 
 
-  public function estimate($id) {
+  public function estimate(Request $request) {
+
+    $productTypeID = $request->input('productTypeID');
+    $productTypePartID = $request->input('productTypePartID');
+    $quantity = $request->input('Quantity');
+    $size = $request->input('size');
+    $pages = $request->input('pages');
+    $stock = $request->input('stock');
+    $lamination = $request->input('lamination');
 
     $json = [
-              'ProductTypeID'=> 2,
-              'FinishedSize'=> [
-                'Code'=> '55 X 90MM BUSINESS CARD'
-              ],
-              'Quantity'=> 50,
-              'Parts'=> [
-                [
-                  'Pages'=> 2,
-                  'PaperCode'=> 'DIG GLO 150',
-                  'FinishedSize'=> [
-                    'Code'=> '55 X 90MM BUSINESS CARD'
-                  ],
-                  'ProductTypePartID'=> 41,
-                ]
+            "ProductTypeID"=> $productTypeID,
+            "FinishedSize"=> [
+              "Code"=> "$size"
+            ],
+            "Quantity"=> $quantity,
+            "Parts"=> [
+              [
+                "Pages"=> $pages,
+                "PaperCode"=> "$stock",
+                "FinishedSize"=> [
+                  "Code"=> "$size"
+                ],
+                "ProductTypePartID"=> $productTypePartID,
               ]
-
+            ],
+            "Processes"=> [
+              [
+                "ProcessTypeID"=> 394,
+              ]
+            ]
       ];
-    $product = product_model::where('id', "=", $id)->firstOrFail();
 
     $apiKey = config('global.apiKey');
     $apiPassword = config('global.password');
-
     $client = new \GuzzleHttp\Client();
 
     $options = [
@@ -105,7 +120,7 @@ class VoyagerController extends BaseVoyagerController
     $res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", $options);
 
     $decodedResponse = json_decode($res->getBody(),true);
-    var_dump($decodedResponse['Details']['Estimate']['Price']);
-
+    $price = $decodedResponse['Details']['Estimate']['Price'];
+    return view('vendor.voyager.result', compact('price'));
     }
 }
