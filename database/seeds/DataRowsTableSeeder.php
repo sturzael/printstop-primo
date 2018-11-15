@@ -463,7 +463,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 6,
+                'order' => 8,
             ),
             28 => 
             array (
@@ -479,7 +479,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 0,
                 'details' => '{}',
-                'order' => 7,
+                'order' => 9,
             ),
             29 => 
             array (
@@ -576,6 +576,54 @@ class DataRowsTableSeeder extends Seeder
                 'delete' => 0,
                 'details' => '{}',
                 'order' => 6,
+            ),
+            35 => 
+            array (
+                'id' => 36,
+                'data_type_id' => 5,
+                'field' => 'product_description',
+                'type' => 'text',
+                'display_name' => 'Product Description',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 6,
+            ),
+            36 => 
+            array (
+                'id' => 37,
+                'data_type_id' => 5,
+                'field' => 'product_image',
+                'type' => 'image',
+                'display_name' => 'Product Image',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 7,
+            ),
+            37 => 
+            array (
+                'id' => 38,
+                'data_type_id' => 7,
+                'field' => 'paper_name',
+                'type' => 'text',
+                'display_name' => 'Paper Name',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 4,
             ),
         ));
         
