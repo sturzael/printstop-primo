@@ -1,14 +1,12 @@
 @extends('voyager::master') @section('content')
 <div class="row">
   <div class="col-sm-6" id="product_image">
-    <img src="/storage/{{$data['Image']}}" width="80%">
+    <img src="http://localhost:8000/storage/p0rFdVJ8ZUhNpSWyPK60c0bPlD2Lmr8p7HJ3pMG8.jpeg" width="80%">
   </div>
   <div class="col-sm-6">
     <div class="page-content" style="padding-left:20px;">
       @include('voyager::alerts') @include('voyager::dimmers')
-      <h1>
-        <?=$product->product_name ?>
-      </h1>
+
       <form class="" action="/dashboard/product/{{$product['id']}}/estimate" method="post">
           <input type="hidden" name="productTypeID" value="{{$data['ProductTypeId']}}">
             <input type="hidden" name="productTypePartID" value="{{$data['ProductTypePartId']}}">
@@ -65,7 +63,7 @@
         <div class="form-element">
             <input type="submit">
         </div>
-
+        <h1>{{$price}}</h1>
       </form>
     </div>
   </div>

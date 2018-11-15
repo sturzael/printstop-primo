@@ -42,6 +42,10 @@ class VoyagerController extends BaseVoyagerController
          'title'=>$decodedResponse['Details']['Items'][0]['Name']
     );
 
+    //Product Image
+    $data['Image'] = $product->product_image;
+
+
     //Product IDs
       $data['ProductTypeId'] = $product->product_type;
       $data['ProductTypePartId'] = $decodedResponse['Details']['Items'][0]['Parts'][0]['ID'];
@@ -103,7 +107,7 @@ class VoyagerController extends BaseVoyagerController
             ],
             "Processes"=> [
               [
-                "ProcessTypeID"=> 394,
+                "ProcessTypeID"=>$lamination,
               ]
             ]
       ];
@@ -120,7 +124,7 @@ class VoyagerController extends BaseVoyagerController
     $res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", $options);
 
     $decodedResponse = json_decode($res->getBody(),true);
-    $price = $decodedResponse['Details']['Estimate']['Price'];
+    $price = $decodedResponse['Details']['Estimate']['ID'];
     return view('vendor.voyager.result', compact('price'));
     }
 }
