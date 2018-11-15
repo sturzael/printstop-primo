@@ -18,7 +18,8 @@ class ProductTableSeeder extends Seeder
           'product_type'=> '11',
           'paper'=>'Leaflet',
           'product_name'=>'Infigo Leaflet demo product',
-          'product_image' => 'https://placehold.it/100x100',
+          'product_description'=>'Demo project built for testing',
+          'product_image' => 'uploadImage.jpg',
           'created_at' => date( 'Y-m-d', $timestamp ),
           'updated_at' => date( 'Y-m-d', $timestamp )
         )

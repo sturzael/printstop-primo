@@ -14,3 +14,10 @@
   display: block;
 }
 
+.product-image-card {
+  background-position: center;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
