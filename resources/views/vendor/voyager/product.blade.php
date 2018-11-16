@@ -1,7 +1,12 @@
 @extends('voyager::master') @section('content')
 <div class="row">
   <div class="col-sm-6" id="product_image">
+    <?php if (isset($data['Image'])) {?>
     <img src="/storage/{{$data['Image']}}" width="80%">
+  <?php }else {?>
+      <img src="/storage/<?=$product->product_image?>" width="80%">
+<?php  } ?>
+
   </div>
   <div class="col-sm-6">
     <div class="page-content" style="padding-left:20px;">
@@ -11,7 +16,8 @@
       </h1>
       <form class="" action="/dashboard/product/{{$product['id']}}/estimate" method="post">
           <input type="hidden" name="productTypeID" value="{{$data['ProductTypeId']}}">
-            <input type="hidden" name="productTypePartID" value="{{$data['ProductTypePartId']}}">
+          <input type="hidden" name="productTypePartID" value="{{$data['ProductTypePartId']}}">
+          <input type="hidden" name="productID" value="{{$data['ProductId']}}">
         @if(count($data['sizes']) > 0)
         <div class="form-element">
           <label for="size">Finished Size </label>
@@ -67,7 +73,21 @@
         </div>
 
       </form>
+
+      <?php if (isset($price)) {?>
+        <p><b>Estimated price:</b> <?=$price?></p>
+      <?php }; ?>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+
+localStorage.setItem("names", JSON.stringify(<?=$Laminationtype['ID']?>));
+
+var storedNames = JSON.parse(localStorage.getItem("names"))
+
+console.log(storedNames);
+</script>
 @stop
