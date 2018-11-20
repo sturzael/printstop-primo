@@ -32,7 +32,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('product_management');
         Permission::generateFor('stock_management');
         Permission::generateFor('users');
-
+        Permission::generateFor('permissions');
         Permission::generateFor('settings');
     }
 }
