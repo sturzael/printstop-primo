@@ -70,8 +70,6 @@ class RegisterController extends Controller
           'code' => 'required|string|min:2|max:25|unique:users|in:'.$isValid,
           'password' => 'required|string|min:6|confirmed',
       ]);
-
-
     }
 
     /**

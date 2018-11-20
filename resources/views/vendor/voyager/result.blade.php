@@ -8,9 +8,9 @@
       @include('voyager::alerts') @include('voyager::dimmers')
       <script type="text/javascript">
 
-    
 
-      var storedNames = JSON.parse(localStorage.getItem("names"))
+
+      var storedNames = JSON.parse(localStorage.getItem("lamination"));
 
       console.log(storedNames);
       </script>
