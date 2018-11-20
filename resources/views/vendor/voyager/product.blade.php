@@ -82,16 +82,34 @@
 </div>
 
 <script type="text/javascript">
-var lamination = JSON.parse(localStorage.getItem("lamination") || "[]");
+let Lamination = JSON.parse(localStorage.getItem("lamination") || "[]");
+let sizes = JSON.parse(localStorage.getItem("sizes") || "[]");
 
-<?php
-  $x = 0;
-  foreach ($data['Lamination'] as $Laminationtype) {
-  $x++; ?>
-  lamination.push({id: <?=$x?>, id: <?=$Laminationtype['ID']?>, description: "<?=$Laminationtype['Description']?>"});
-<?php }?>
+let items = ['Lamination','sizes'];
 
-  localStorage.setItem("lamination", JSON.stringify(lamination));
-  
+for (var i = 0; i < items.length; i++) {
+  let item = JSON.parse(items[i]);
+  items.forEach(function(element){
+
+
+  })
+
+}
+
+
+
+items.forEach(function(element){
+
+
+})
+
+for (var i = 0; i < items.length; i++) {
+  <?php foreach ($data[?>items[i]<?php] as $?>JSON.parse(items[i])<?phptype) {?>
+  JSON.parse(items[i]).push({id: <?=$Laminationtype['ID']?>, description: "<?=$Laminationtype['Description']?>"});
+  <?php }?>
+}
+
+localStorage.setItem("Lamination", JSON.stringify(Lamination));
+
 </script>
 @stop
