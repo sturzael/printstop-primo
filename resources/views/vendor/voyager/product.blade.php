@@ -55,8 +55,8 @@
         <div class="form-element">
           <label for="lamination" >Lamination</label>
           <select id="lamination" name="lamination">
-            @foreach($data['Lamination'] as $Laminationtype)
-            <option value="{{$Laminationtype['ID']}}"> {{$Laminationtype['Description']}}</option>
+            @foreach($data['Lamination'] as $LaminationType)
+            <option value="{{$LaminationType['ID']}}"> {{$LaminationType['Description']}}</option>
             @endforeach
             <option>No Lamination</option>
           </select>
@@ -82,34 +82,33 @@
 </div>
 
 <script type="text/javascript">
-let Lamination = JSON.parse(localStorage.getItem("lamination") || "[]");
-let sizes = JSON.parse(localStorage.getItem("sizes") || "[]");
 
-let items = ['Lamination','sizes'];
+let items = ['Lamination'];
 
 for (var i = 0; i < items.length; i++) {
-  let item = JSON.parse(items[i]);
-  items.forEach(function(element){
+  let item = items[i];
+  let runme = function(item){
+    return ;
+  }
+  eval(`let ${item}`);
 
+  ${item}
 
-  })
+  document.cookie = `item=${item}`;
 
+  <?php
+  $cookieItem = $_COOKIE['item'];
+  $itemTypefunction = function(){
+    echo eval('$'. $_COOKIE['item'].'Type' . ';');
+  };
+
+  foreach ($data[$cookieItem] as $itemTypefunction):?>
+    <?=$cookieItem?>.push({id: <?=$itemTypefunction['ID']?>, description: "<?=$itemTypefunction['Description']?>"});
+  <?php endforeach;?>
 }
 
 
-
-items.forEach(function(element){
-
-
-})
-
-for (var i = 0; i < items.length; i++) {
-  <?php foreach ($data[?>items[i]<?php] as $?>JSON.parse(items[i])<?phptype) {?>
-  JSON.parse(items[i]).push({id: <?=$Laminationtype['ID']?>, description: "<?=$Laminationtype['Description']?>"});
-  <?php }?>
-}
-
-localStorage.setItem("Lamination", JSON.stringify(Lamination));
+// localStorage.setItem("Lamination", JSON.stringify(Lamination));
 
 </script>
 @stop
