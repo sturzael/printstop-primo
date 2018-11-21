@@ -24,10 +24,15 @@
                         <span class="signin">{{ __('voyager::generic.login') }}</span>
                     </button>
 
-                    <button class="btn btn-block login-button" style="float:right;">
+                    <button class="btn btn-block login-button" style="float:right; margin-left:20px;">
                         <span class="signin"><a style="color:white;">
                           {{ __('Forgot Your Password?') }}</a></span>
                     </button>
+                    <button class="btn btn-block login-button" style="float:right;">
+                        <span><a style="color:white;" href="/register">
+                        Register</a></span>
+                    </button>
+
 
               </form>
 

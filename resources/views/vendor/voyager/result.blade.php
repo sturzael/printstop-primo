@@ -6,8 +6,15 @@
   <div class="col-sm-6">
     <div class="page-content" style="padding-left:20px;">
       @include('voyager::alerts') @include('voyager::dimmers')
+      <script type="text/javascript">
 
-      <h1>Your estimated price: ${{$price}}</h1>
+
+
+      var storedNames = JSON.parse(localStorage.getItem("Lamination"));
+
+      console.log(storedNames);
+      </script>
+
     </div>
   </div>
 </div>

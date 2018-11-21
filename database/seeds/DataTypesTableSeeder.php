@@ -12,12 +12,12 @@ class DataTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('data_types')->delete();
-        
+
         \DB::table('data_types')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'users',
@@ -35,7 +35,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-11-11 22:10:23',
                 'updated_at' => '2018-11-11 22:10:23',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'menus',
@@ -53,7 +53,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-11-11 22:10:23',
                 'updated_at' => '2018-11-11 22:10:23',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'roles',
@@ -71,7 +71,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-11-11 22:10:23',
                 'updated_at' => '2018-11-11 22:10:23',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 5,
                 'name' => 'product_management',
@@ -89,7 +89,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-11-12 00:08:42',
                 'updated_at' => '2018-11-12 01:37:31',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 7,
                 'name' => 'stock_management',
@@ -107,8 +107,26 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-11-12 00:53:49',
                 'updated_at' => '2018-11-12 00:53:49',
             ),
+            5 =>
+            array (
+                'id' => 9,
+                'name' => 'permissions',
+                'slug' => 'permissions',
+                'display_name_singular' => 'Permissions',
+                'display_name_plural' => 'Permissions',
+                'icon' => 'voyager-lock',
+                'model_name' => 'TCG\\Voyager\\Models\\Permission',
+                'policy_name' => NULL,
+                'controller' => '',
+                'description' => '',
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => NULL,
+                'created_at' => '2018-11-12 00:53:49',
+                'updated_at' => '2018-11-12 00:53:49',
+            )
         ));
-        
-        
+
+
     }
 }
