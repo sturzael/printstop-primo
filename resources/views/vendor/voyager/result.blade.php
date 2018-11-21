@@ -10,7 +10,7 @@
 
 
 
-      var storedNames = JSON.parse(localStorage.getItem("lamination"));
+      var storedNames = JSON.parse(localStorage.getItem("Lamination"));
 
       console.log(storedNames);
       </script>
