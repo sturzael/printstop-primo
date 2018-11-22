@@ -9,7 +9,10 @@
       <script type="text/javascript">
 
       let Lamination = JSON.parse(localStorage.getItem("Lamination") || "[]");
-      console.log(Lamination);
+      let sizes = JSON.parse(localStorage.getItem("sizes") || "[]");
+
+      console.log(sizes);
+
       </script>
 
     </div>
