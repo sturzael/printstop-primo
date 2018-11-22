@@ -84,7 +84,7 @@
 <script type="text/javascript">
 
 let items = ['Lamination'];
-let Lamination = JSON.parse(localStorage.getItem("Lamination") || "[]");
+
 for (var i = 0; i < items.length; i++) {
 
   document.cookie = `item=${items[i]}`;
@@ -94,11 +94,16 @@ for (var i = 0; i < items.length; i++) {
     echo eval('$'. $_COOKIE['item'].'Type' . ';');
   };
   $itemTypeFunction;
+  ?>
 
-  foreach ($data[$cookieItem] as $itemTypefunction):?>
-    <?=$cookieItem?>.push({id: <?=$itemTypefunction['ID']?>, description: "<?=$itemTypefunction['Description']?>"});
+    localStorage.setItem(`${items[i]}`, JSON.stringify([
+      <?php foreach ($data[$cookieItem] as $itemTypefunction):?>
+      {id: <?=$itemTypefunction['ID']?>, description: "<?=$itemTypefunction['Description']?>"},
   <?php endforeach;?>
-  localStorage.setItem(`${items[i]}`, JSON.stringify(items[i]));
+]));
+
+
+
 }
 
 </script>

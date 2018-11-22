@@ -8,11 +8,8 @@
       @include('voyager::alerts') @include('voyager::dimmers')
       <script type="text/javascript">
 
-
-
-      var storedNames = JSON.parse(localStorage.getItem("Lamination"));
-
-      console.log(storedNames);
+      let Lamination = JSON.parse(localStorage.getItem("Lamination") || "[]");
+      console.log(Lamination);
       </script>
 
     </div>
