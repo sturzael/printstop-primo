@@ -16,11 +16,72 @@ class VoyagerController extends BaseVoyagerController
   }
 
   public function index(){
+  $apiKey = config('global.apiKey');
+    $apiPassword = config('global.password');
+        // process types list
+    $client = new \GuzzleHttp\Client();
+    $res = $client->request("GET","http://online.printstop.co.nz:80/API/api/processtypes?", [
+      'auth' => [$apiKey, $apiPassword]
+    ]);
+    
+    $decodedResponse = json_decode($res->getBody());
+    // process list per side 
+    // $processList = $decodedResponse['Details']['Items'][3]['IsPerSide'];
+
+
+
+
+      // Check array isPerSide
+      $processListFull = $decodedResponse->Details->Items;
+
+      
+      foreach ($processListFull as $something) {
+        $Lists = $something->Name;
+        print_r($Lists);
+        echo "<br>";
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // print_r($processListFull);
+  
+    // print_r($processListFull);
+    // die(print_r($processList));
+    // if ($processList == 1) {
+    //   print_r("Double Sided");
+    // } else {
+    //   print_r('Not Double Sided');
+    // }
+    die();
+
+
+
+
+
+
+
+
+
+
+
+
+
     $products = json_decode(product_model::all(),true);
     return  view('vendor.voyager.index', compact('products'));
   }
 
   public function show($id) {
+
 
     $product = product_model::where('id', "=", $id)->firstOrFail();
     $stock = DB::table('stock_management')->select('paper_code','paper_name',"paper_product as $product->paper")->get();

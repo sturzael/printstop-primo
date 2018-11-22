@@ -81,7 +81,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 let items = ['Lamination'];
 let Lamination = JSON.parse(localStorage.getItem("Lamination") || "[]");
@@ -101,5 +101,5 @@ for (var i = 0; i < items.length; i++) {
   localStorage.setItem(`${items[i]}`, JSON.stringify(items[i]));
 }
 
-</script>
+</script> -->
 @stop
