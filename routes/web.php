@@ -30,7 +30,8 @@ Route::get('/dashboard/login', function () {
     }
 });
 
-Route::post('/dashboard/product/{id}/estimate', 'Voyager\VoyagerController@estimate');
+//Deactivating estimator
+// Route::post('/dashboard/product/{id}/estimate', 'Voyager\VoyagerController@estimate');
 Route::resource('/dashboard/product', 'Voyager\VoyagerController');
 Route::get('/dashboard/contact', 'contactController@index');
 Route::get('/dashboard/logout', 'Auth\LoginController@logout');

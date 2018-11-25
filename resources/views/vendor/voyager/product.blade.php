@@ -1,4 +1,5 @@
 @extends('voyager::master') @section('content')
+
 <div class="row">
   <div class="col-sm-6" id="product_image">
     <?php if (isset($data['Image'])) {?>
@@ -14,7 +15,7 @@
       <h1>
         <?=$product->product_name ?>
       </h1>
-      <form class="" action="/dashboard/product/{{$product['id']}}/estimate" method="post">
+      <form id="estimateform" method="post">
           <input type="hidden" name="productTypeID" value="{{$data['ProductTypeId']}}">
           <input type="hidden" name="productTypePartID" value="{{$data['ProductTypePartId']}}">
           <input type="hidden" name="productID" value="{{$data['ProductId']}}">

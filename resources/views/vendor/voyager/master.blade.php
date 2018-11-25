@@ -14,6 +14,10 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
 
+  
+
+     
+
     @yield('css')
     @if(config('voyager.multilingual.rtl'))
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
@@ -107,6 +111,8 @@ if (starts_with(Auth::user()->avatar, 'http://') || starts_with(Auth::user()->av
 @include('voyager::partials.app-footer')
 
 <!-- Javascript Libs -->
+<script src="{{ mix('js/jquery.min.js') }}"></script>
+
 
 
 <script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
@@ -138,6 +144,9 @@ if (starts_with(Auth::user()->avatar, 'http://') || starts_with(Auth::user()->av
 @if(!empty(config('voyager.additional_js')))<!-- Additional Javascript -->
     @foreach(config('voyager.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
+
+<!-- App JS -->
+<script src="/js/app.js" type="text/javascript"></script>
 
 </body>
 </html>
