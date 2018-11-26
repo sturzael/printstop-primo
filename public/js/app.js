@@ -99,7 +99,6 @@ $("#estimateform").submit(function (event) {
 	$.ajax({
 		method: 'POST',
 		url: '/dashboard/product/estimate',
-		data: { 'id': id },
 		success: function success(DataFromJson) {
 			console.log(DataFromJson);
 		},
