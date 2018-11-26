@@ -7,52 +7,52 @@ use Illuminate\Support\Facades\Input;
 class AjaxEstimateController extends Controller
 {
     public function estimate(Request $request){
-      $productID = $request->input('productID');
-      $productTypeID = $request->input('productTypeID');
-      $productTypePartID = $request->input('productTypePartID');
-      $quantity = $request->input('Quantity');
-      $size = $request->input('size');
-      $pages = $request->input('pages');
-      $stock = $request->input('stock');
-      $lamination = $request->input('lamination');
+			$data = $request->all();
+
+      $productID = $data['productID'];
+      $productTypeID = $data['productTypeId'];
+      $productTypePartID = $data['productTypePartID'];
+      $quantity = $data['quantity'];
+      $size = $data['size'];
+      $pages = $data['pages'];
+      $stock = $data['stock'];
+      $lamination = $data['lamination'];
         
       $json = [
-               "ProductTypeID"=> $productTypeID,
+               "ProductTypeID"=> 11,
                  "FinishedSize"=> [
-                   "Code"=> "$size"
+                   "Code"=> "A4"
                  ],
-                 "Quantity"=> $quantity,
+                 "Quantity"=> 100,
                  "Parts"=> [
                    [
-                     "Pages"=> $pages,
-                     "PaperCode"=> "$stock",
+                     "Pages"=> 1,
+                     "PaperCode"=> "DIG GLO 130",
                      "FinishedSize"=> [
-                       "Code"=> "$size"
+                       "Code"=> "A4"
                      ],
-                     "ProductTypePartID"=> $productTypePartID,
+                     "ProductTypePartID"=> 23,
                    ]
                  ],
                  "Processes"=> [
                    [
-                     "ProcessTypeID"=>$lamination,
+                     "ProcessTypeID"=>11,
                    ]
                  ]
 							 ];
 							        
-      $apiKey = config('global.apiKey');
-			$apiPassword = config('global.password');
-			
-      $client = new \GuzzleHttp\Client();
-         $options = [
-          'auth' => [$apiKey, $apiPassword],
-          'json' => $json
-			];
-			
-			$res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", $options);
+    $apiKey = config('global.apiKey');
+		$apiPassword = config('global.password');
+		
+		$client = new \GuzzleHttp\Client();
 
-      print($res);
+		$res = $client->request("POST","http://online.printstop.co.nz:80/API/api/estrequest/", [
+			'auth' => [$apiKey, $apiPassword],'json' => $json
+		]);
+
+    $decodedResponse = json_decode($res->getBody(),true);
+		$price = $decodedResponse['Details']['Estimate']['Price'];
+		
+		return $price;
     }
-
-
-
 }

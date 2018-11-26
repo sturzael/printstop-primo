@@ -76,31 +76,25 @@ module.exports = __webpack_require__(2);
 /***/ (function(module, exports) {
 
 
-// $.ajax({
-// 	url: "config.json",
-// 	dataType: "json",
-// 	beforeSend: function(xhr) {
-// 		if (xhr.overrideMimeType) {
-// 			xhr.overrideMimeType("application/json");
-// 		}
-// 	},
-// 	success: function(DataFromJson) {
-// 		console.log(DataFromJson);
-// 	},
-// 	error: function() {
-// 		console.log("Something Went Wrong");
-// 	}
-// })
-var id = 12; // A random variable for this example
-
 
 $("#estimateform").submit(function (event) {
 
 	event.preventDefault();
 
+	var inputs = { 'productTypeId': $("input[name=productTypeID]").val(),
+		'productTypePartID': $("input[name=productTypePartID]").val(),
+		'productID': $("input[name=productID]").val(),
+		'size': $("#size").val(),
+		'stock': $("#stock").val(),
+		'pages': $("#pages").val(),
+		'lamination': $("#lamination").val(),
+		'quantity': $("#Quantity").val()
+	};
+
 	$.ajax({
 		method: 'POST',
 		url: '/dashboard/product/estimate',
+		data: inputs,
 		success: function success(DataFromJson) {
 			console.log(DataFromJson);
 		},
