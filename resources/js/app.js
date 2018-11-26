@@ -26,4 +26,19 @@ $("#estimateform").submit(function(event) {
      // ajax here
 });
 
+$.ajax({
+    url: "config.json",
+    dataType: "json",
+    beforeSend: function(xhr) {
+      if (xhr.overrideMimeType) {
+        xhr.overrideMimeType("application/json");
+      }
+  
+    },
+    success: function(DataFromJson) {
 
+    },
+    error: function() {
+      console.log("Something Went Wrong");
+    }
+  })

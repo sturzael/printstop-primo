@@ -103,6 +103,20 @@ $("#estimateform").submit(function (event) {
   // ajax here
 });
 
+$.ajax({
+  url: "config.json",
+  dataType: "json",
+  beforeSend: function beforeSend(xhr) {
+    if (xhr.overrideMimeType) {
+      xhr.overrideMimeType("application/json");
+    }
+  },
+  success: function success(DataFromJson) {},
+  error: function error() {
+    console.log("Something Went Wrong");
+  }
+});
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
