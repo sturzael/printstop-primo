@@ -96,7 +96,8 @@ $("#estimateform").submit(function (event) {
 		url: '/dashboard/product/estimate',
 		data: inputs,
 		success: function success(DataFromJson) {
-			console.log(DataFromJson);
+			$('#price').clear();
+			$('#price').append("<b>Estimated Price:</b> $" + DataFromJson);
 		},
 		error: function error() {
 			console.log("Something Went Wrong");

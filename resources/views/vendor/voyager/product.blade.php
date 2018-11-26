@@ -75,9 +75,8 @@
 
       </form>
 
-      <?php if (isset($price)) {?>
-        <p><b>Estimated price:</b> <?=$price?></p>
-      <?php }; ?>
+        <p id="price"></p>
+
     </div>
   </div>
 </div>
