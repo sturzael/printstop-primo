@@ -20,15 +20,17 @@ var id = 12; // A random variable for this example
 
 
 $("#estimateform").submit(function(event) {
+
 	event.preventDefault();
+
 	$.ajax({
     method: 'POST', 
     url: '/dashboard/product/estimate', 
-	success: function(DataFromJson) {
-		console.log(DataFromJson);
-	},
-	error: function() {
-		console.log("Something Went Wrong");
-	}
-});
+		success: function(DataFromJson) {
+			console.log(DataFromJson);
+		},
+		error: function() {
+			console.log("Something Went Wrong");
+		}
+	});
 });
