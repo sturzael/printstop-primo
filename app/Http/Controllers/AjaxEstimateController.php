@@ -74,7 +74,7 @@ class AjaxEstimateController extends Controller
 
     $decodedResponse = json_decode($res->getBody(),true);
 		$price = $decodedResponse['Details']['Estimate']['Price'];
-		
-		return $price;
+		$estimateID = $decodedResponse['Details']['Estimate']['ID'];
+		return "$price <br><b> Estimate ID:</b> $estimateID";
     }
 }
