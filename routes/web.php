@@ -9,8 +9,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {return redirect('/dashboard');});
 
 Auth::routes();
+
 Route::group(['prefix' => 'dashboard','middleware'=>'auth'], function () {
     Voyager::routes();
     Route::post('/product/estimate', 'AjaxEstimateController@estimate');
