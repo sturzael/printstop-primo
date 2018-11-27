@@ -35,7 +35,7 @@ class AjaxEstimateController extends Controller
 								"ProductTypePartID"=> $productTypePartID,
 							]
 						]
-							];
+					];
 			} else {
 				$json = [
 					"ProductTypeID"=> $productTypeID,
@@ -58,7 +58,7 @@ class AjaxEstimateController extends Controller
 								"ProcessTypeID"=>$lamination,
 							]
 						]
-							];
+					];
 			};
 						    
     $apiKey = config('global.apiKey');
