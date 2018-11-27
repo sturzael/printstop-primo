@@ -23,8 +23,8 @@
                         <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
                         <span class="signin">{{ __('voyager::generic.login') }}</span>
                     </button>
-
-                    <button class="btn btn-block login-button" style="float:right; margin-left:20px;">
+              </form>
+              <button class="btn btn-block login-button" style="float:right; margin-left:20px;">
                         <span class="signin"><a style="color:white;">
                           {{ __('Forgot Your Password?') }}</a></span>
                     </button>
@@ -32,9 +32,6 @@
                         <span><a style="color:white;" href="/register">
                         Register</a></span>
                     </button>
-
-
-              </form>
 
               <div style="clear:both"></div>
 
