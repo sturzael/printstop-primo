@@ -3,4 +3,5 @@
 # *.scss linguist-vendored
 # *.js linguist-vendored
 CHANGELOG.md export-ignore
-public/vendor linguist-vendored
+public/vendor/* inguist-generated=true
+public/vendor inguist-generated=true
