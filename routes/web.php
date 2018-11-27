@@ -9,29 +9,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
-Route::group(['prefix' => 'dashboard'], function () {
+Route::group(['prefix' => 'dashboard','middleware'=>'auth'], function () {
     Voyager::routes();
+    Route::post('/product/estimate', 'AjaxEstimateController@estimate');
+    Route::resource('/product', 'Voyager\VoyagerController');
+    Route::get('/contact', 'contactController@index');
+    Route::get('/logout', 'Auth\LoginController@logout');
 });
-Route::get('/', function () {
-  Auth::routes();
-    if(Auth::check()) {
-        return redirect('/dashboard');
-    } else {
-        return View('auth.login');
-    }
-});
-Route::get('/dashboard/login', function () {
-  Auth::routes();
-    if(Auth::check()) {
-        return redirect('/dashboard');
-    } else {
-        return redirect('/');
-    }
-});
-
-Route::post('/dashboard/product/estimate', 'AjaxEstimateController@estimate');
-Route::resource('/dashboard/product', 'Voyager\VoyagerController');
-Route::get('/dashboard/contact', 'contactController@index');
-Route::get('/dashboard/logout', 'Auth\LoginController@logout');
-

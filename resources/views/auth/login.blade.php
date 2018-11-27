@@ -19,16 +19,16 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-block login-button">
+                    <button type="submit" class="btn btn-block login-button" >
                         <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
                         <span class="signin">{{ __('voyager::generic.login') }}</span>
                     </button>
               </form>
-              <button class="btn btn-block login-button" style="float:right; margin-left:20px;">
-                        <span class="signin"><a style="color:white;">
+              <button class="btn btn-block login-button" style="float:right; margin-left:20px;" onClick="window.location='/password/reset'">
+                        <span class="signin"><a style="color:white;" href="/password/reset">
                           {{ __('Forgot Your Password?') }}</a></span>
                     </button>
-                    <button class="btn btn-block login-button" style="float:right;">
+                    <button class="btn btn-block login-button" style="float:right;" onClick="window.location='/register'">
                         <span><a style="color:white;" href="/register">
                         Register</a></span>
                     </button>
