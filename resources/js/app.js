@@ -18,7 +18,7 @@ $("#estimateform").submit(function(event) {
 		data: inputs,
 		success: function(DataFromJson) {
 			$('#estimate_loader').css('display','none');
-			$('#price').append("<b>Estimated Price:</b> $" + DataFromJson);
+			$('#price').append(DataFromJson);
 		},
 		error: function() {
 			console.log("Something Went Wrong");

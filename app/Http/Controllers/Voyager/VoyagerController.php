@@ -61,6 +61,16 @@ class VoyagerController extends BaseVoyagerController
     }
     $data['sizes'] = $sizesList;
 
+
+    //Get pages num
+    $data['pages'] = $decodedResponse['Details']['Items'][0]['MaximumPages'];
+
+    //Get MaximumQuantity num
+    $data['maxquantity'] = $decodedResponse['Details']['Items'][0]['MaximumQuantity'];
+
+    //Get MinimumQuantity num
+    $data['minquantity'] = $decodedResponse['Details']['Items'][0]['MinimumQuantity'];
+
     //Lamination
     $LaminationList = array();
     foreach ($decodedResponse['Details']['Items'][0]['Parts'][0]['Processes'] as $lamination) {

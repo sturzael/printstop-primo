@@ -32,4 +32,7 @@
 #estimate_loader{
   display: none;
 }
+form#estimateform input, select {
+  min-width: 176px;
+}
 

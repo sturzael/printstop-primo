@@ -60,9 +60,7 @@ class AjaxEstimateController extends Controller
 						]
 							];
 			};
-			
-			
-							        
+						    
     $apiKey = config('global.apiKey');
 		$apiPassword = config('global.password');
 		
@@ -75,6 +73,8 @@ class AjaxEstimateController extends Controller
     $decodedResponse = json_decode($res->getBody(),true);
 		$price = $decodedResponse['Details']['Estimate']['Price'];
 		$estimateID = $decodedResponse['Details']['Estimate']['ID'];
-		return "$price <br><b> Estimate ID:</b> $estimateID";
+
+		return (isset($price) ? "<b> Estimate Price:</b> $$price <br><b> Estimate ID:</b> $estimateID" : "Please contact your nearest studio");
+
     }
 }

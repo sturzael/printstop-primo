@@ -22,7 +22,7 @@
         @if(count($data['sizes']) > 0)
         <div class="form-element">
           <label for="size">Finished Size </label>
-          <select id="size">
+          <select id="size" required>
             @foreach($data['sizes'] as $size)
             <option value="{{$size['Code']}}"> {{$size['Description']}}</option>
             @endforeach
@@ -33,7 +33,7 @@
         @if(count($data['Stock']) > 0)
         <div class="form-element">
           <label for="stock">Paper</label>
-          <select id="stock" name="stock">
+          <select id="stock" name="stock" required>
             @foreach($data['Stock'] as $paper)
             <option value="{{$paper['Code']}}"> {{$paper['Stock']}}</option>
             @endforeach
@@ -43,19 +43,13 @@
 
         <div class="form-element">
           <label for="pages">Pages</label>
-          <select id="pages" name="pages">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <input type="number" id="pages" name="pages" min="1" max="{{$data['pages']}}" required>
         </div>
 
         @if(count($data['Lamination']) > 0)
         <div class="form-element">
           <label for="lamination" >Lamination</label>
-          <select id="lamination" name="lamination">
+          <select id="lamination" name="lamination" required>
             @foreach($data['Lamination'] as $LaminationType)
             <option value="{{$LaminationType['ID']}}"> {{$LaminationType['Description']}}</option>
             @endforeach
@@ -66,7 +60,7 @@
 
         <div class="form-element">
           <label for="Quantity">Quantity</label>
-          <input type="number" id="Quantity" name="Quantity" max="99999">
+          <input type="number" id="Quantity" name="Quantity" min="{{$data['minquantity']}}" max="{{$data['maxquantity']}}" required>
         </div>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <div class="form-element">
