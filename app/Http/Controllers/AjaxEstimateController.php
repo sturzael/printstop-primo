@@ -2,11 +2,13 @@
 
 namespace Primo\Http\Controllers;
 use Illuminate\Http\Request;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 class AjaxEstimateController extends Controller
 {
     public function estimate(Request $request){
+		
 			$data = $request->all();
 
       $productID = $data['productID'];
@@ -18,6 +20,8 @@ class AjaxEstimateController extends Controller
       $stock = $data['stock'];
 			$lamination = $data['lamination'];
 				
+			$customerCode = Auth::user()->code;
+
 			if ($lamination == 0) {
 				$json = [
 					"ProductTypeID"=> $productTypeID,
@@ -25,6 +29,9 @@ class AjaxEstimateController extends Controller
 							"Code"=> "$size"
 						],
 						"Quantity"=> $quantity,
+						"Customer"=> [
+							"Code"=>"$customerCode"			
+						],
 						"Parts"=> [
 							[
 								"Pages"=> $pages,
@@ -43,6 +50,9 @@ class AjaxEstimateController extends Controller
 							"Code"=> "$size"
 						],
 						"Quantity"=> $quantity,
+						"Customer"=> [
+								"Code"=>"$customerCode"			
+						],
 						"Parts"=> [
 							[
 								"Pages"=> $pages,
