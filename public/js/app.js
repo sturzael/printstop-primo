@@ -75,12 +75,9 @@ module.exports = __webpack_require__(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-
-
 $("#estimateform").submit(function (event) {
-
 	event.preventDefault();
-
+	$('#estimate_loader').css('display', 'inline-block');
 	var inputs = { 'productTypeId': $("input[name=productTypeID]").val(),
 		'productTypePartID': $("input[name=productTypePartID]").val(),
 		'productID': $("input[name=productID]").val(),
@@ -91,12 +88,13 @@ $("#estimateform").submit(function (event) {
 		'quantity': $("#Quantity").val()
 	};
 
+	$('#price').empty();
 	$.ajax({
 		method: 'POST',
 		url: '/dashboard/product/estimate',
 		data: inputs,
 		success: function success(DataFromJson) {
-			$('#price').clear();
+			$('#estimate_loader').css('display', 'none');
 			$('#price').append("<b>Estimated Price:</b> $" + DataFromJson);
 		},
 		error: function error() {

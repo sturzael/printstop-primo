@@ -21,3 +21,11 @@
   background-repeat: no-repeat;
 }
 
+#price {
+  display: contents;
+}
+
+#estimate_loader {
+  display: none;
+}
+

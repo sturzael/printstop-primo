@@ -1,10 +1,6 @@
-
-
-
 $("#estimateform").submit(function(event) {
-
 	event.preventDefault();
-
+	$('#estimate_loader').css('display','inline-block');
 	let inputs = {'productTypeId': $("input[name=productTypeID]").val(),
 		'productTypePartID': $("input[name=productTypePartID]").val(),
 		'productID':$("input[name=productID]").val(),
@@ -15,14 +11,14 @@ $("#estimateform").submit(function(event) {
 		'quantity': $("#Quantity").val()
 };
 
-
+	$('#price').empty();
 	$.ajax({
     method: 'POST', 
 		url: '/dashboard/product/estimate',
 		data: inputs,
 		success: function(DataFromJson) {
-			$('#price').clear();
-			$('#price').append(`<b>Estimated Price:</b> $${DataFromJson}`);
+			$('#estimate_loader').css('display','none');
+			$('#price').append("<b>Estimated Price:</b> $" + DataFromJson);
 		},
 		error: function() {
 			console.log("Something Went Wrong");

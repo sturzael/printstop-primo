@@ -16,30 +16,52 @@ class AjaxEstimateController extends Controller
       $size = $data['size'];
       $pages = $data['pages'];
       $stock = $data['stock'];
-      $lamination = $data['lamination'];
-        
-      $json = [
-               "ProductTypeID"=> 11,
-                 "FinishedSize"=> [
-                   "Code"=> "A4"
-                 ],
-                 "Quantity"=> 100,
-                 "Parts"=> [
-                   [
-                     "Pages"=> 1,
-                     "PaperCode"=> "DIG GLO 130",
-                     "FinishedSize"=> [
-                       "Code"=> "A4"
-                     ],
-                     "ProductTypePartID"=> 23,
-                   ]
-                 ],
-                 "Processes"=> [
-                   [
-                     "ProcessTypeID"=>11,
-                   ]
-                 ]
-							 ];
+			$lamination = $data['lamination'];
+				
+			if ($lamination == 0) {
+				$json = [
+					"ProductTypeID"=> $productTypeID,
+						"FinishedSize"=> [
+							"Code"=> "$size"
+						],
+						"Quantity"=> $quantity,
+						"Parts"=> [
+							[
+								"Pages"=> $pages,
+								"PaperCode"=> "$stock",
+								"FinishedSize"=> [
+									"Code"=> "$size"
+								],
+								"ProductTypePartID"=> $productTypePartID,
+							]
+						]
+							];
+			} else {
+				$json = [
+					"ProductTypeID"=> $productTypeID,
+						"FinishedSize"=> [
+							"Code"=> "$size"
+						],
+						"Quantity"=> $quantity,
+						"Parts"=> [
+							[
+								"Pages"=> $pages,
+								"PaperCode"=> "$stock",
+								"FinishedSize"=> [
+									"Code"=> "$size"
+								],
+								"ProductTypePartID"=> $productTypePartID,
+							]
+						],
+						"Processes"=> [
+							[
+								"ProcessTypeID"=>$lamination,
+							]
+						]
+							];
+			};
+			
+			
 							        
     $apiKey = config('global.apiKey');
 		$apiPassword = config('global.password');

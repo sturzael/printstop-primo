@@ -59,14 +59,14 @@
             @foreach($data['Lamination'] as $LaminationType)
             <option value="{{$LaminationType['ID']}}"> {{$LaminationType['Description']}}</option>
             @endforeach
-            <option>No Lamination</option>
+            <option value="0">No Lamination</option>
           </select>
         </div>
         @endif
 
         <div class="form-element">
           <label for="Quantity">Quantity</label>
-          <input type="number" id="Quantity" name="Quantity" max="99999" value="">
+          <input type="number" id="Quantity" name="Quantity" max="99999">
         </div>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <div class="form-element">
@@ -75,8 +75,10 @@
 
       </form>
 
+    <div id="result_container">
         <p id="price"></p>
-
+        <img src="/appImages/estimateLoading.gif" alt="loading gif" width="35px" id="estimate_loader">
+        </div>
     </div>
   </div>
 </div>
