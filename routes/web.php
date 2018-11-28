@@ -13,7 +13,7 @@ Route::get('/', function () {return redirect('/dashboard');});
 
 Auth::routes();
 
-Route::group(['prefix' => 'dashboard','middleware'=>'auth'], function () {
+Route::group(['prefix' => 'dashboard','middleware'=>['auth']], function () {
     Voyager::routes();
     Route::post('/product/estimate', 'AjaxEstimateController@estimate');
     Route::resource('/product', 'Voyager\VoyagerController');
