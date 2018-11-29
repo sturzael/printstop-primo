@@ -1,7 +1,5 @@
 <p align="center"><img src="https://github.com/sturzael/printstop-primo/blob/edev/redshift.png"></p>
 
-<p align="center">Printing management & estimation system.</p>
-
 ##Mac Os, Ubuntu and windows users continue here:
 
 Create a database locally named primo_est - utf8_general_ci
