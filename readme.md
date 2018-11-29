@@ -1,4 +1,4 @@
-<p align="center"><img src="https://media.licdn.com/dms/image/C560BAQEuF16-63yutQ/company-logo_200_200/0?e=2159024400&v=beta&t=Yk1j8pBUW4s_-o_5IomY_0K5g308I0xPkVdR7E1IxdE"></p>
+<p align="center"><img src="https://github.com/sturzael/printstop-primo/blob/edev/redshift.png"></p>
 
 <p align="center">Printing management & estimation system.</p>
 
