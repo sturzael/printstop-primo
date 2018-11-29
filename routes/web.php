@@ -19,4 +19,5 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth']], function () {
     Route::resource('/product', 'Voyager\VoyagerController');
     Route::get('/contact', 'contactController@index');
     Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/hooks', function () {abort(404);});
 });
