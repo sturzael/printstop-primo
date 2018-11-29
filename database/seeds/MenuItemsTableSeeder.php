@@ -177,22 +177,6 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => 'voyager.settings.index',
                 'parameters' => NULL,
             ),
-            10 => 
-            array (
-                'id' => 11,
-                'menu_id' => 1,
-                'title' => 'Hooks',
-                'url' => '',
-                'target' => '_self',
-                'icon_class' => 'voyager-hook',
-                'color' => NULL,
-                'parent_id' => 5,
-                'order' => 9,
-                'created_at' => '2018-11-11 22:52:21',
-                'updated_at' => '2018-11-12 00:10:29',
-                'route' => 'voyager.hooks',
-                'parameters' => NULL,
-            ),
             11 => 
             array (
                 'id' => 12,

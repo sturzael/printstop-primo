@@ -33,7 +33,6 @@
 </a>
 
 
-
 <!-- //route -->
 <?php
 Route::get('/duplicate', ['uses' => $namespacePrefix.'VoyagerMenuController@duplicate',    'as' => 'duplicate']);
