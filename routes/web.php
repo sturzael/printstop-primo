@@ -21,3 +21,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth']], function () {
     Route::get('/logout', 'Auth\LoginController@logout');
     Route::get('/hooks', function () {abort(404);});
 });
+
+Route::post('/password/reset',[
+    'uses' => 'Auth\ResetPasswordController@reset'
+]);

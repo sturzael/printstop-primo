@@ -11,9 +11,9 @@ echo 'Seeding new data'
 php artisan db:seed
 
 echo 'Making new user'
-php artisan voyager:admin admin@nettl.com
+php artisan voyager:admin nz.support@nettl.com
 
-echo 'Email: admin@nettl.com'
+echo 'Email: nz.support@nettl.com'
 echo 'Password: password'
 
 echo 'Vist your app and login at localhost:8000/login'

@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      'id' => '1',
      'role_id' => '1',
      'name' => 'admin',
-      'email'=>'admin@nettl.com',
+      'email'=>'nz.support@nettl.com',
       'avatar'=>'users/default.png',
       'code'=>'400855',
      'password' => bcrypt('password')
