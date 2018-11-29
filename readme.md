@@ -1,10 +1,6 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://media.licdn.com/dms/image/C560BAQEuF16-63yutQ/company-logo_200_200/0?e=2159024400&v=beta&t=Yk1j8pBUW4s_-o_5IomY_0K5g308I0xPkVdR7E1IxdE"></p>
 
-<p align="center">
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<p align="center">Printing management & estimation system.</p>
 
 ##Mac Os, Ubuntu and windows users continue here:
 
