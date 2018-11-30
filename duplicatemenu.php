@@ -29,7 +29,7 @@
     
 <!-- button -->
     <a href="{{ route('voyager.'.$dataType->slug.'.duplicate', $data->{$data->getKeyName()}) }}" class="btn btn-sm btn-primary pull-right edit">
-    <i class="voyager-edit"></i> {{ __('voyager::generic.duplicate') }}
+    <i class="voyager-edit"></i>Duplicate
 </a>
 
 
