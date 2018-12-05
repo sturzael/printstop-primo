@@ -76,9 +76,13 @@ module.exports = __webpack_require__(2);
 /***/ (function(module, exports) {
 
 $("#estimateform").submit(function (event) {
+
 	event.preventDefault();
+
 	$('#estimate_loader').css('display', 'inline-block');
-	var inputs = { 'productTypeId': $("input[name=productTypeID]").val(),
+
+	var inputs = {
+		'productTypeId': $("input[name=productTypeID]").val(),
 		'productTypePartID': $("input[name=productTypePartID]").val(),
 		'productID': $("input[name=productID]").val(),
 		'size': $("#size").val(),
@@ -89,6 +93,7 @@ $("#estimateform").submit(function (event) {
 	};
 
 	$('#price').empty();
+
 	$.ajax({
 		method: 'POST',
 		url: '/dashboard/product/estimate',
@@ -98,10 +103,15 @@ $("#estimateform").submit(function (event) {
 			$('#price').append(DataFromJson);
 		},
 		error: function error() {
-			console.log("Something Went Wrong");
+			console.log("AjaxEstimateController POST request not functioning");
 		}
 	});
 });
+
+var doc = new jsPDF();
+
+doc.text('Hello world!', 10, 10);
+doc.save('a4.pdf');
 
 /***/ }),
 /* 2 */

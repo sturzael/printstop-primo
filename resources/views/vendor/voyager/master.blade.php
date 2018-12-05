@@ -113,7 +113,7 @@ if (starts_with(Auth::user()->avatar, 'http://') || starts_with(Auth::user()->av
 <!-- Javascript Libs -->
 <script src="{{ mix('js/jquery.min.js') }}"></script>
 
-
+<script src="{{ mix('js/jspdf.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
 
