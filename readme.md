@@ -24,3 +24,5 @@ $ Run php artisan key:generate
 $ Run setup.sh
 ```
 You can now access your project at localhost:8000
+
+You will need to enter your tharstern api details in config/global.php
